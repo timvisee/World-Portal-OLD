@@ -1,0 +1,10 @@
+name: World Portal
+main: me.timvisee.WorldPortal.WorldPortal
+version: 0.2.6
+commands:
+  wp:
+    description: World Portal command
+    usage: /wp
+  worldportal:
+    description: World Portal command
+    usage: /worldportal
