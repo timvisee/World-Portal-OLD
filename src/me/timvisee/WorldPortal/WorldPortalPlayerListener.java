@@ -18,6 +18,8 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.Location;
 
+import sun.security.action.GetLongAction;
+
 public class WorldPortalPlayerListener implements Listener {
 	public static Logger log = Logger.getLogger("Minecraft");
 	public static WorldPortal plugin;
@@ -88,9 +90,14 @@ public class WorldPortalPlayerListener implements Listener {
 		
 		if(plugin.createPortal.isPlayerInCreationMode(player)) {
 			if(plugin.createPortal.getWPUsersValue(player) == 1) {
-				plugin.createPortal.CreatePortalLinkWorld(player, message);
+
+				if ( plugin.worldExists(message) || (plugin.canCreateWorlds(player) && plugin.getConfig().getBoolean("createNewWorld",  true)) ) {
+					plugin.createPortal.CreatePortalLinkWorld(player, message);
+				} else { 
+					player.sendMessage(ChatColor.DARK_RED + message);
+					player.sendMessage(plugin.getMessage("createWorldDisabled", "&e[World Portal] That world does not exist, choose another."));
+				}
 				event.setCancelled(true);
-				
 			} else if(plugin.createPortal.getWPUsersValue(player) == 2) {
 				if(message.equalsIgnoreCase("normal") || message.equalsIgnoreCase("nether") || message.equalsIgnoreCase("end")) {
 					plugin.createPortal.CreatePortalSelectEnvironment(player, message);
@@ -101,8 +108,7 @@ public class WorldPortalPlayerListener implements Listener {
 							"&e[World Portal] Chose from &fnormal&e, &fnether&e or &fend"};
 					plugin.sendMessageList(player, "selectedInvalidEvironment", Arrays.asList(defaultMessages));
 					event.setCancelled(true);
-				}
-				
+				}				
 			} else if(plugin.createPortal.getWPUsersValue(player) == 3) {
 				if(message.equalsIgnoreCase("spawn")) {
 					plugin.createPortal.CreatePortalSelectSpawnPoint(player, "spawn");
@@ -138,8 +144,7 @@ public class WorldPortalPlayerListener implements Listener {
 					}
 					
 					event.setCancelled(true);
-				}
-				
+				}				
 			} else if(plugin.createPortal.getWPUsersValue(player) == 4) {
 				if(plugin.stringIsInt(message)) {
 					int lookingDirection = Integer.parseInt(message);
@@ -164,7 +169,7 @@ public class WorldPortalPlayerListener implements Listener {
 		if(reason.equalsIgnoreCase("You moved too quickly :( (Hacking?)")) {
 			if(plugin.movedTooQuicklyIgnoreList.contains(player.getName())) {
 				
-				player.teleport(plugin.getLastTeleportPlayerLocation(player.getName()));
+				player.teleport(plugin.getLastTeleportPlayerLocation(player.getName()), TeleportCause.PLUGIN);
 				event.setCancelled(true);
 			}
 		}

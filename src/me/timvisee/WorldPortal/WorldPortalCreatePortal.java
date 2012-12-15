@@ -86,7 +86,11 @@ public class WorldPortalCreatePortal {
 			setWPUsersValue(player, 1);
 			// Send message to the player who creates the portal
 			player.sendMessage(plugin.getMessage("newWorldPortalSelectedMessage", "&e[World Portal] &aNew world portal selected"));
-			player.sendMessage(plugin.getMessage("selectNewWorldMessage", "&e[World Portal] Which world should be linked? Enter the world name into the chat. It can be a new world"));
+			if ( plugin.canCreateWorlds(player) && plugin.getConfig().getBoolean("createNewWorld",  true)) {
+				player.sendMessage(plugin.getMessage("selectNewWorldMessage", "&e[World Portal] Which world should be linked? Enter the world name into the chat. It can be a new world"));
+			} else {
+				player.sendMessage(plugin.getMessage("selectWorldMessage", "&e[World Portal] Which world should be linked? Enter the world name into the chat."));				
+			}
 		} else {
 			player.sendMessage(plugin.getMessage("worldPortalAlreadyLinkedMessage", "&e[World Portal] &4This already is a world portal!"));
 		}
@@ -97,7 +101,7 @@ public class WorldPortalCreatePortal {
 			wpCreatingWorldPortalLinkedWorld.remove(player);
 		}
 		wpCreatingWorldPortalLinkedWorld.put(player, worldName);
-		
+				
 		// Send the player a succesfully linked message
 		player.sendMessage("");
 		String message = plugin.getMessage("worldPortalWorldLinkedMessage", "e[World Portal] World '&f%worldname%&e' linked");
@@ -117,7 +121,7 @@ public class WorldPortalCreatePortal {
 			// Select new world environment
 			setWPUsersValue(player, 2);
 			String[] defaultMessages = {"&e[World Portal] Select the environment for the new world. Enter the environment type in the chat.", "&e[World Portal] Chose from &fnormal&e, &fnether&e or &fend"};
-			plugin.sendMessageList(player, "selectNewEnvironmentMessage", Arrays.asList(defaultMessages));
+			plugin.sendMessageList(player, "selectNewEnvironmentMessage", Arrays.asList(defaultMessages));	
 		}
 	}
 	
