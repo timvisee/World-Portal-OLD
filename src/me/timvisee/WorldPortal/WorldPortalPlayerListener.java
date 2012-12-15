@@ -164,7 +164,7 @@ public class WorldPortalPlayerListener implements Listener {
 		if(reason.equalsIgnoreCase("You moved too quickly :( (Hacking?)")) {
 			if(plugin.movedTooQuicklyIgnoreList.contains(player.getName())) {
 				
-				player.teleport(plugin.getLastTeleportPlayerLocation(player.getName()));
+				player.teleport(plugin.getLastTeleportPlayerLocation(player.getName()), TeleportCause.PLUGIN);
 				event.setCancelled(true);
 			}
 		}

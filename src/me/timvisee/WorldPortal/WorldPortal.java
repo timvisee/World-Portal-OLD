@@ -219,6 +219,12 @@ public class WorldPortal extends JavaPlugin implements CommandExecutor {
 		return false;
 	}
 
+	public boolean canCreateWorlds(Player player) {
+	    if (usePermissions()) {
+	        return hasPermission(player, "worldportal.createworld");
+	    }
+	    return player.isOp();
+	}
 	public boolean canUsePortal(Player player) {
 	    if (usePermissions()) {
 	        return hasPermission(player, "worldportal.use");
@@ -951,7 +957,7 @@ public class WorldPortal extends JavaPlugin implements CommandExecutor {
 		
 		addLastTeleportPlayerLocation(player, location);
 		player.setVelocity(new Vector(0, 0, 0));
-		player.teleport(location);
+		player.teleport(location, TeleportCause.PLUGIN);
 
 		/*getServer().broadcastMessage("0:" + player.getLocation().toString());
 		Location l = new Location(location.getWorld(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ());

@@ -1,0 +1,43 @@
+name: World Portal
+main: me.timvisee.WorldPortal.WorldPortal
+version: 0.2.7
+author: timvisee, dh1jc
+dev-url: http://dev.bukkit.org/server-mods/world-portal
+description: >
+  Create portals using signs, pressureplates, buttons and more!
+commands:
+  wp:
+    description: World Portal command
+    usage: /wp
+  worldportal:
+    description: World Portal command
+    usage: /worldportal
+permissions:
+  worldportal.*:
+    description: Access to all WorldPortal commands
+    children:
+      worldportal.use: true
+      worldportal.create: true
+      worldportal.remove: true
+      worldportal.teleport: true
+      worldportal.save: true
+      worldportal.reload: true
+  worldportal.use:
+    default: true
+    description: Allowance to use a worldportal
+  worldportal.create:
+    default: op
+    description: Permission to create a World Portal
+  worldportal.remove:
+    default: op
+    description: Permission to remove a World Portal
+  worldportal.teleport:
+    default: op
+    description: Permission to use the teleport commands
+  worldportal.save:
+    default: op
+    description: Permission to save the current world portals
+  worldportal.reload: 
+    default: op
+    description: Permission to reload the world portals
+  
