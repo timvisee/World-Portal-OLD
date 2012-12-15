@@ -101,7 +101,7 @@ public class WorldPortalCreatePortal {
 			wpCreatingWorldPortalLinkedWorld.remove(player);
 		}
 		wpCreatingWorldPortalLinkedWorld.put(player, worldName);
-		
+				
 		// Send the player a succesfully linked message
 		player.sendMessage("");
 		String message = plugin.getMessage("worldPortalWorldLinkedMessage", "e[World Portal] World '&f%worldname%&e' linked");
@@ -118,15 +118,10 @@ public class WorldPortalCreatePortal {
 			String[] defaultMessages = {"&e[World Portal] Select the spawn point in the linked world. Enter the value in the chat.", "&e[World Portal] Chose from &fspawn&e, &fhere&e, &f<X> <Z>&e or &f<X> <Y> <Z>"};
 			plugin.sendMessageList(player, "selectNewSpawnMessage", Arrays.asList(defaultMessages));
 		} else {
-			// does player have permission to CREATE a new world?
-			if ( plugin.canCreateWorlds(player) && plugin.getConfig().getBoolean("createNewWorld",  true)) {
-				// Select new world environment
-				setWPUsersValue(player, 2);
-				String[] defaultMessages = {"&e[World Portal] Select the environment for the new world. Enter the environment type in the chat.", "&e[World Portal] Chose from &fnormal&e, &fnether&e or &fend"};
-				plugin.sendMessageList(player, "selectNewEnvironmentMessage", Arrays.asList(defaultMessages));
-			} else {
-				player.sendMessage(plugin.getMessage("createModeDisabled", "&e[World Portal] That world does not exist."));
-			}	
+			// Select new world environment
+			setWPUsersValue(player, 2);
+			String[] defaultMessages = {"&e[World Portal] Select the environment for the new world. Enter the environment type in the chat.", "&e[World Portal] Chose from &fnormal&e, &fnether&e or &fend"};
+			plugin.sendMessageList(player, "selectNewEnvironmentMessage", Arrays.asList(defaultMessages));	
 		}
 	}
 	

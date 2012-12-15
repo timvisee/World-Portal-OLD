@@ -22,9 +22,9 @@ createModeEnabled:
 createModeDisabled: '&e[World Portal] Creation-mode &4disabled'
 newWorldPortalSelectedMessage: '&e[World Portal] &aNew world portal selected'
 worldPortalAlreadyLinkedMessage: '&e[World Portal] &4This already is a world portal!'
-selectWorldMessage: '&e[World Portal] Which world should be linked? Enter the world name into the chat. It can be a new world'
+selectWorldMessage: '&e[World Portal] Which world should be linked? Enter the world name into the chat.'
 selectNewWorldMessage: '&e[World Portal] Which world should be linked? Enter the world name into the chat. It can be a new world'
-createModeDisabled: '&e[World Portal] That world does not exist.'
+createWorldDisabled: '&e[World Portal] That world does not exist, choose another.'
 worldPortalWorldLinkedMessage: '&e[World Portal] World ''&f%worldname%&e'' linked'
 selectNewEnvironmentMessage:
     - '&e[World Portal] Select the environment for the new world. Enter the environment type in the chat.'

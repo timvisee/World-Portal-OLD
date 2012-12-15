@@ -22,6 +22,7 @@ permissions:
       worldportal.teleport: true
       worldportal.save: true
       worldportal.reload: true
+      worldportal.createworld: true
   worldportal.use:
     default: true
     description: Allowance to use a worldportal
@@ -40,4 +41,8 @@ permissions:
   worldportal.reload: 
     default: op
     description: Permission to reload the world portals
+  worldportal.createworld:
+    default: op
+    description: Permission to create new Worlds
+    
   
