@@ -325,15 +325,15 @@ public class WorldPortal extends JavaPlugin implements CommandExecutor {
 		}
 		if(!worldPortalConfigFile.exists()) {
 			log.info("[WorldPortal] Generating new config file");
-			copy(getResource("res/WorldPortal/config.yml"), worldPortalConfigFile);
+			copy(getResource("res/World Portal/config.yml"), worldPortalConfigFile);
 		}
 		if(!worldPortalsFile.exists()) {
 			log.info("[WorldPortal] Generating new portals file");
-			copy(getResource("res/WorldPortal/World Portals.list"), worldPortalsFile);
+			copy(getResource("res/World Portal/World Portals.list"), worldPortalsFile);
 		}
 		if(!worldPortalLangFile.exists()) {
 			log.info("[WorldPortal] Generating new language file");
-			copy(getResource("res/WorldPortal/messages.yml"), worldPortalLangFile);
+			copy(getResource("res/World Portal/messages.yml"), worldPortalLangFile);
 		}
 	}
 	

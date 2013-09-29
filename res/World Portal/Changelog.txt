@@ -1,0 +1,3 @@
+Added a new permissions system. (Now supports: PermissionsEx, PermissionsBukkit, bPermissions, Essentials Group Manager, zPermissions, Vault and Permissions!)
+Added ability to use wooden buttons as portal.
+Build against Bukkit-1.4.6-R0.1
