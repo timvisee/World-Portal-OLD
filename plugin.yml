@@ -1,6 +1,6 @@
 name: World Portal
 main: me.timvisee.WorldPortal.WorldPortal
-version: 0.2.6
+version: 0.2.7
 commands:
   wp:
     description: World Portal command

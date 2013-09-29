@@ -511,6 +511,13 @@ public class WorldPortal extends JavaPlugin implements CommandExecutor {
 					}
 					return true;
 				} else if(args[0].equalsIgnoreCase("tp") || args[0].equalsIgnoreCase("teleport")) {
+					
+					// Make sure the command has at least 2 or more arguments
+					if(args.length <= 1) {
+						sender.sendMessage(ChatColor.YELLOW + "[World Portal] Invalid command arguments!");
+						return true;
+					}
+					
 					if(sender instanceof Player) {
 						// Check if the player can use this command
 						if(canUseWPTeleport((Player) sender)) {
